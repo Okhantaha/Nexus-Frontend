@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #0A0A0A;
+  --primary: #FF5C00;
+  --primary-soft: #FF7A3D;
+  --ink: #FFFFFF;
+  --surface: #171717;
+  --surface-2: #232323;
+  --muted: #A0A0A0;
+  --line: #2A2A2A;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  background: #000;
+  color: var(--ink);
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 50% 0%, #1a1a1a, #000);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--surface) inset !important;
+  -webkit-text-fill-color: var(--ink) !important;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
