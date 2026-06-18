@@ -5,25 +5,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-export default function Button({ variant = "primary", loading, children, disabled, ...props }: ButtonProps) {
-  const base: React.CSSProperties = {
-    width: "100%", border: "none", cursor: "pointer",
-    fontFamily: "var(--sans)", fontSize: 16, fontWeight: 600,
-    padding: "17px", borderRadius: 16,
-    display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-    transition: "filter .2s, opacity .2s, transform .15s",
-    opacity: disabled || loading ? 0.5 : 1,
-  };
+export default function Button({ variant = "primary", loading, children, disabled, className = "", style, ...props }: ButtonProps) {
+  const base = "w-full cursor-pointer font-semibold text-base py-[17px] rounded-2xl flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50";
 
-  const variants: Record<string, React.CSSProperties> = {
-    primary: { background: "var(--primary)", color: "#fff" },
-    ghost: { background: "transparent", color: "var(--ink)", border: "1.5px solid var(--line)" },
-    dark: { background: "var(--surface-2)", border: "1.5px solid var(--line)", color: "var(--ink)" },
+  const variants: Record<string, string> = {
+    primary: "bg-[var(--primary)] text-white border-none",
+    ghost: "bg-transparent text-[var(--ink)] border border-[var(--line)]",
+    dark: "bg-[var(--surface-2)] border border-[var(--line)] text-[var(--ink)]",
   };
 
   return (
     <button
-      style={{ ...base, ...variants[variant] }}
+      className={`${base} ${variants[variant]} ${className}`}
+      style={{ fontFamily: "var(--sans)", ...style }}
       disabled={disabled || loading}
       {...props}
     >

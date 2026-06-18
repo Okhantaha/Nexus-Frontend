@@ -31,20 +31,25 @@ export default function ForgotPasswordPage() {
 
   return (
     <AuthLayout>
-      <button onClick={() => router.back()} style={{ width: 42, height: 42, borderRadius: "50%", border: "1.5px solid var(--line)", background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "var(--ink)", marginBottom: 24 }}>
+      <button
+        onClick={() => router.back()}
+        className="w-[42px] h-[42px] rounded-full border border-[var(--line)] bg-[var(--surface)] flex items-center justify-center cursor-pointer text-[var(--ink)] mb-6"
+      >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
-      <div style={{ marginBottom: 32 }}>
-        <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--primary)", marginBottom: 14 }}>Şifre Sıfırla</p>
-        <h1 style={{ fontFamily: "var(--serif)", fontWeight: 700, fontSize: 38, lineHeight: 1.02 }}>Şifreni<br />unuttun mu?</h1>
-        <p style={{ color: "var(--muted)", marginTop: 14, fontSize: 15, lineHeight: 1.5 }}>
+      <div className="mb-8">
+        <p className="text-[11px] font-semibold tracking-[.16em] uppercase text-[var(--primary)] mb-3">Şifre Sıfırla</p>
+        <h1 className="font-bold text-[34px] sm:text-[38px] leading-[1.02] text-[var(--ink)]" style={{ fontFamily: "var(--serif)" }}>
+          Şifreni<br />unuttun mu?
+        </h1>
+        <p className="text-[var(--muted)] mt-3 text-[15px] leading-relaxed">
           E-posta adresini gir, sıfırlama kodunu gönderelim.
         </p>
       </div>
 
       {error && (
-        <div style={{ background: "rgba(255,92,0,.1)", border: "1px solid rgba(255,92,0,.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 16, fontSize: 14, color: "var(--primary-soft)" }}>
+        <div className="bg-[rgba(255,92,0,.1)] border border-[rgba(255,92,0,.3)] rounded-xl px-4 py-3 mb-4 text-sm text-[var(--primary-soft)]">
           {error}
         </div>
       )}
@@ -53,13 +58,13 @@ export default function ForgotPasswordPage() {
         <Field label="E-posta">
           <input type="email" placeholder="ad@sirket.com" value={mail} onChange={e => setMail(e.target.value)} required />
         </Field>
-        <Button type="submit" loading={loading} style={{ marginTop: 8 }}>
+        <Button type="submit" loading={loading} className="mt-2">
           Kod Gönder
         </Button>
       </form>
 
-      <div style={{ marginTop: 24, textAlign: "center" }}>
-        <Link href="/login" style={{ color: "var(--muted)", fontSize: 14, fontWeight: 500, textDecoration: "none" }}>
+      <div className="mt-6 text-center">
+        <Link href="/login" className="text-[var(--muted)] text-sm font-medium no-underline hover:text-[var(--ink)] transition-colors">
           ← Girişe dön
         </Link>
       </div>

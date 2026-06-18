@@ -8,12 +8,12 @@ interface FieldProps {
 
 export default function Field({ label, error, children }: FieldProps) {
   return (
-    <div style={{ marginBottom: 16 }}>
-      <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "var(--ink)", marginBottom: 7, letterSpacing: ".01em" }}>
+    <div className="mb-4">
+      <label className="block text-[13px] font-semibold text-[var(--ink)] mb-[7px] tracking-[.01em]">
         {label}
       </label>
       {children}
-      {error && <p style={{ color: "var(--primary)", fontSize: 12, marginTop: 5, fontWeight: 500 }}>{error}</p>}
+      {error && <p className="text-[var(--primary)] text-xs mt-1 font-medium">{error}</p>}
     </div>
   );
 }

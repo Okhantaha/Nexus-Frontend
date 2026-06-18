@@ -39,3 +39,24 @@ input:-webkit-autofill {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+input:not([type="tel"]) {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+}
+
+input:not([type="tel"]):focus {
+  border-color: var(--primary);
+}
+
+input:not([type="tel"])::placeholder {
+  color: var(--muted);
+}

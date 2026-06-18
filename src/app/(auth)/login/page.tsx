@@ -34,12 +34,12 @@ export default function LoginPage() {
 
   return (
     <AuthLayout>
-      <div style={{ marginBottom: 38 }}>
-        <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--primary)", marginBottom: 16 }}>
+      <div className="mb-9">
+        <p className="text-[11px] font-semibold tracking-[.16em] uppercase text-[var(--primary)] mb-4">
           Öğlen molası, yeniden keşfedildi
         </p>
-        <h1 style={{ fontFamily: "var(--serif)", fontWeight: 700, fontSize: 42, lineHeight: 1.02, letterSpacing: "-.01em" }}>
-          Ekibinle<br />bugün <em style={{ color: "var(--primary)", fontStyle: "italic" }}>nerede</em><br />yiyorsunuz?
+        <h1 className="font-bold text-[38px] sm:text-[42px] leading-[1.02] tracking-tight text-[var(--ink)]" style={{ fontFamily: "var(--serif)" }}>
+          Ekibinle<br />bugün <em className="text-[var(--primary)] italic">nerede</em><br />yiyorsunuz?
         </h1>
       </div>
 
@@ -64,20 +64,20 @@ export default function LoginPage() {
             required
           />
         </Field>
-        <Button type="submit" loading={loading} style={{ marginTop: 8 }}>
+        <Button type="submit" loading={loading} className="mt-2">
           Giriş Yap
         </Button>
       </form>
 
-      <div style={{ textAlign: "center", margin: "22px 0" }}>
-        <Link href="/forgot-password" style={{ color: "var(--muted)", fontSize: 14, fontWeight: 500, textDecoration: "none" }}>
+      <div className="text-center my-5">
+        <Link href="/forgot-password" className="text-[var(--muted)] text-sm font-medium no-underline hover:text-[var(--ink)] transition-colors">
           Şifremi unuttum
         </Link>
       </div>
 
-      <div style={{ marginTop: "auto", paddingTop: 18, textAlign: "center", borderTop: "1px solid var(--line)" }}>
-        <span style={{ color: "var(--muted)", fontSize: 14 }}>Hesabın yok mu? </span>
-        <Link href="/register" style={{ color: "var(--primary)", fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+      <div className="pt-4 text-center border-t border-[var(--line)]">
+        <span className="text-[var(--muted)] text-sm">Hesabın yok mu? </span>
+        <Link href="/register" className="text-[var(--primary)] text-sm font-semibold no-underline">
           Kayıt Ol
         </Link>
       </div>

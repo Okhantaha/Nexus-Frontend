@@ -82,26 +82,31 @@ export default function ResetPasswordPage() {
 
   return (
     <AuthLayout>
-      <button onClick={() => router.back()} style={{ width: 42, height: 42, borderRadius: "50%", border: "1.5px solid var(--line)", background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "var(--ink)", marginBottom: 24 }}>
+      <button
+        onClick={() => router.back()}
+        className="w-[42px] h-[42px] rounded-full border border-[var(--line)] bg-[var(--surface)] flex items-center justify-center cursor-pointer text-[var(--ink)] mb-6"
+      >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
-      <div style={{ marginBottom: 24 }}>
-        <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--primary)", marginBottom: 14 }}>Yeni Şifre</p>
-        <h1 style={{ fontFamily: "var(--serif)", fontWeight: 700, fontSize: 38, lineHeight: 1.02 }}>Kodu gir &<br />şifreni belirle</h1>
-        <p style={{ color: "var(--muted)", marginTop: 14, fontSize: 15, lineHeight: 1.5 }}>
-          <span style={{ color: "var(--ink)", fontWeight: 600 }}>{maskEmail(mail)}</span> adresine gönderilen kodu gir.
+      <div className="mb-6">
+        <p className="text-[11px] font-semibold tracking-[.16em] uppercase text-[var(--primary)] mb-3">Yeni Şifre</p>
+        <h1 className="font-bold text-[34px] sm:text-[38px] leading-[1.02] text-[var(--ink)]" style={{ fontFamily: "var(--serif)" }}>
+          Kodu gir &<br />şifreni belirle
+        </h1>
+        <p className="text-[var(--muted)] mt-3 text-[15px] leading-relaxed">
+          <span className="text-[var(--ink)] font-semibold">{maskEmail(mail)}</span> adresine gönderilen kodu gir.
         </p>
       </div>
 
       {error && (
-        <div style={{ background: "rgba(255,92,0,.1)", border: "1px solid rgba(255,92,0,.3)", borderRadius: 12, padding: "12px 16px", marginBottom: 16, fontSize: 14, color: "var(--primary-soft)" }}>
+        <div className="bg-[rgba(255,92,0,.1)] border border-[rgba(255,92,0,.3)] rounded-xl px-4 py-3 mb-4 text-sm text-[var(--primary-soft)]">
           {error}
         </div>
       )}
 
       <form onSubmit={handleSubmit}>
-        <div style={{ display: "flex", gap: 9, margin: "0 0 8px" }} onPaste={handlePaste}>
+        <div className="flex gap-2 sm:gap-[9px] mb-2" onPaste={handlePaste}>
           {otp.map((v, i) => (
             <input
               key={i}
@@ -112,28 +117,29 @@ export default function ResetPasswordPage() {
               maxLength={1}
               inputMode="numeric"
               type="tel"
+              className="flex-1 w-0 text-center outline-none rounded-[14px] text-[var(--ink)] transition-all duration-200"
               style={{
-                flex: 1, width: 0, aspectRatio: "1/1.18", textAlign: "center",
+                aspectRatio: "1/1.18",
                 border: `1.5px solid ${v ? "var(--primary)" : "var(--line)"}`,
                 background: v ? "var(--surface-2)" : "var(--surface)",
-                borderRadius: 14,
-                fontFamily: "var(--serif)", fontSize: 28, fontWeight: 600, color: "var(--ink)",
-                outline: "none",
+                fontFamily: "var(--serif)",
+                fontSize: "clamp(20px, 5vw, 28px)",
+                fontWeight: 600,
               }}
             />
           ))}
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "18px 2px 20px" }}>
-          <span style={{ color: "var(--muted)", fontSize: 14 }}>Kalan süre</span>
-          <span style={{ fontFamily: "var(--serif)", fontWeight: 600, fontSize: 18, color: timer > 0 ? "var(--primary)" : "var(--muted)" }}>{timerStr}</span>
+        <div className="flex items-center justify-between mx-0.5 my-5">
+          <span className="text-[var(--muted)] text-sm">Kalan süre</span>
+          <span className="font-semibold text-lg" style={{ fontFamily: "var(--serif)", color: timer > 0 ? "var(--primary)" : "var(--muted)" }}>{timerStr}</span>
         </div>
 
         <Field label="Yeni Şifre">
           <input type="password" placeholder="En az 6 karakter" value={yeniSifre} onChange={e => setYeniSifre(e.target.value)} minLength={6} required />
         </Field>
 
-        <Button type="submit" loading={loading} style={{ marginTop: 8 }}>
+        <Button type="submit" loading={loading} className="mt-2">
           Şifremi Güncelle
         </Button>
       </form>
