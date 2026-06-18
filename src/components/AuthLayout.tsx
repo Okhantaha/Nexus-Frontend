@@ -2,8 +2,8 @@
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-[radial-gradient(circle_at_50%_0%,#1a1a1a,#000)]">
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-[radial-gradient(circle_at_50%_0%,#1a1a1a,#000)]">
+      <div className="w-full max-w-[420px]">
         <div className="flex items-center gap-3 mb-10">
           <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--primary)]">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
