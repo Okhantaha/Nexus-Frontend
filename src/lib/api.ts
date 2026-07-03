@@ -72,3 +72,52 @@ export const authApi = {
       },
     }),
 };
+
+export interface MekanOneri {
+  id: number;
+  isim: string;
+  adres: string | null;
+  mutfak_turu: string | null;
+  oy_sayisi: number;
+  oy_kullandim: boolean;
+  oneren: { id: number; isim: string; soyisim: string };
+  created_at: string;
+}
+
+export interface SessionDurum {
+  aktif: boolean;
+  tarih: string | null;
+  durum: string | null;
+  mesaj: string;
+}
+
+function authRequest<T>(path: string, options?: RequestInit): Promise<T> {
+  return request<T>(path, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeader(),
+      ...(options?.headers ?? {}),
+    },
+  });
+}
+
+export const lunchApi = {
+  sessionDurum: () =>
+    authRequest<SessionDurum>("/api/lunch/session/durum"),
+
+  oneriler: () =>
+    authRequest<{ oneriler: MekanOneri[]; toplam: number }>("/api/lunch/oneriler"),
+
+  oyVer: (mekanId: number) =>
+    authRequest<{ mekan_id: number; oy_sayisi: number; oy_kullandim: boolean }>(
+      `/api/lunch/oy/${mekanId}`,
+      { method: "POST" }
+    ),
+
+  mekanOner: (payload: { isim: string; adres?: string; mutfak_turu?: string }) =>
+    authRequest<MekanOneri>("/api/lunch/oner", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }),
+};
